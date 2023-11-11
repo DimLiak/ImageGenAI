@@ -30,7 +30,10 @@ def single_prof_scrapper(USER, PASSWORD, PROFILE, NUM_POSTS):
   followees = profile.followees
   is_verified = profile.is_verified
   is_business = profile.is_business_account
-  bus_cat = profile.business_category_nameif if (is_business) else "N/A"
+  if (is_business):
+    bus_cat = profile.business_category_name
+  else:
+    bus_cat = "N/A"
 
   # Start creating our dataset (this is called header as it is common for every folloowing picture)
   dataset_header = [username, followers, followees, is_verified, is_business, bus_cat]
