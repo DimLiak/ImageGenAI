@@ -43,6 +43,9 @@ def single_prof_scrapper(USER, PASSWORD, PROFILE, NUM_POSTS):
   # Keep only image posts
   posts_no_videos = [post for post in posts_sorted_by_likes if post.is_video==False]
 
+  # Keep the number of posts
+  dataset_header = dataset_header + [len(posts_sorted_by_likes)]
+
   # Profile's Dataset
   dataset_prof = [dataset_header]*NUM_POSTS
 
@@ -79,8 +82,8 @@ def main():
   data_prof = single_prof_scrapper(USER, PASSWORD, PROFILE, NUM_POSTS)
 
   headers = ['username', 'followers', 'followees', 'is_verified', 'is_business',
-          'business_category', 'post_url', 'caption', 'hashtags',
-          'likes', 'comments', 'location', 'date_utc', 'img_type']
+             'business_category', 'number_of_posts', 'post_url', 'caption', 'hashtags',
+             'likes', 'comments', 'location', 'date_utc', 'img_type']
 
   df = pd.DataFrame(data=data_prof, columns=headers)
   df.to_csv(f'dataset_{PROFILE}.csv') 
