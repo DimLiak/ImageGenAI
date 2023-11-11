@@ -28,11 +28,12 @@ def single_prof_scrapper(USER, PASSWORD, PROFILE, NUM_POSTS):
   username = profile.username
   followers = profile.followers
   followees = profile.followees
+  is_verified = profile.is_verified
   is_business = profile.is_business_account
   bus_cat = profile.business_category_nameif if (is_business) else "N/A"
 
   # Start creating our dataset (this is called header as it is common for every folloowing picture)
-  dataset_header = [username, followers, followees, is_business, bus_cat]
+  dataset_header = [username, followers, followees, is_verified, is_business, bus_cat]
 
   # Sort posts based on the number of likes + comments (could be changed)
   posts_sorted_by_likes = sorted(profile.get_posts(),
@@ -77,7 +78,7 @@ def main():
 
   data_prof = single_prof_scrapper(USER, PASSWORD, PROFILE, NUM_POSTS)
 
-  headers = ['username', 'followers', 'followees', 'is_business',
+  headers = ['username', 'followers', 'followees', 'is_verified', 'is_business',
           'business_category', 'post_url', 'caption', 'hashtags',
           'likes', 'comments', 'location', 'date_utc', 'img_type']
 
