@@ -19,7 +19,7 @@ def single_prof_scrapper(USER, PASSWORD, PROFILE, NUM_POSTS):
   L = Instaloader()
 
   # Optionally, login or load session
-  # L.login(USER, PASSWORD) # (login)
+  L.login(USER, PASSWORD) # (login)
 
   # Define the instagram profile to be scraped
   profile = Profile.from_username(L.context, PROFILE)
