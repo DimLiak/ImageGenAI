@@ -1,7 +1,6 @@
 import instaloader
 from instaloader import Instaloader, Profile
 import pandas as pd
-import requests
 import sys
 
 def _comp(a,b):
@@ -91,16 +90,6 @@ def main():
 
   df = pd.DataFrame(data=data_prof, columns=headers)
   df.to_csv(f'dataset_{PROFILE}.csv') 
-
-  for i in range(len(df['post_url'])):
-
-    image_url = df['post_url'][i] # Define the url for the image to be donwloaded
-    image_name = df['username'][i]+ '_'+ str(df['date_utc'][i]).replace(" ", "_") # Create an ID for the image's name <USERNAME_DATE-OF-POST>
-
-    # Call this to download and save the image
-    img_data = requests.get(image_url).content
-    with open(f'{image_name}.jpg', 'wb') as handler:
-        handler.write(img_data)
 
   return 0 
 
