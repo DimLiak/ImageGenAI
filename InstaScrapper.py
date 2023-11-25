@@ -95,7 +95,7 @@ def main():
   for i in range(len(df['post_url'])):
 
     image_url = df['post_url'][i] # Define the url for the image to be donwloaded
-    image_name = df['username'][i]+ '_'+ str(df['date_utc'][i]).replace(" ", "_") # Create an ID for the image's name <USERNAME_DATE-OF-POST>
+    image_name = df['username'][i]+ '_'+ str(df['date_utc'][i]).replace(" ", "_").replace(":","__") # Create an ID for the image's name <USERNAME_DATE-OF-POST>
 
     # Call this to download and save the image
     img_data = requests.get(image_url).content
